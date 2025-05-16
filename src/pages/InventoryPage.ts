@@ -13,13 +13,13 @@ export default class InventoryPage extends BasePage {
    * TODO: Implement this method
    */
 
-get inventoryContainer() {
+  get inventoryContainer() {
     return $('#inventory_container'); // Adjust selector if needed
   }
 
   async isLoaded(): Promise<boolean> {
     // TODO: Implement check if inventory page is loaded
-        return await this.inventoryContainer.waitForDisplayed({ timeout: 5000 });
+    return await this.inventoryContainer.waitForDisplayed({ timeout: 5000 });
     //throw new Error('Method not implemented');
   }
 
@@ -28,19 +28,42 @@ get inventoryContainer() {
    * @param itemName Name of the item to add
    * TODO: Implement this method
    */
+  /*  async addItemToCart(itemName: string): Promise<void> {
+      // TODO: Implement adding item to cart
+  const items = await $$('div.inventory_item');
+      for (const item of items) {
+        const title = await item.$('div.inventory_item_name').getText();
+        if (title === itemName) {
+          const addButton = await item.$('button.btn_inventory');
+          await addButton.click();
+          return;
+        }
+      }
+      throw new Error(`Item with name "${itemName}" not found`);
+    }  
+      */
+
   async addItemToCart(itemName: string): Promise<void> {
-    // TODO: Implement adding item to cart
-const items = await $$('div.inventory_item');
+    const items = await $$('div.inventory_item');
     for (const item of items) {
       const title = await item.$('div.inventory_item_name').getText();
       if (title === itemName) {
-        const addButton = await item.$('button.btn_inventory');
-        await addButton.click();
+        const button = await item.$('button.btn_inventory');
+        const buttonText = await button.getText();
+
+        // 🆕 If already added to cart, remove it first
+        if (buttonText === 'Remove') {
+          await button.click(); // reset to "Add to cart"
+          await browser.pause(500); // optional short wait to allow button to update
+        }
+
+        // Now click to add item
+        await button.click();
         return;
       }
     }
     throw new Error(`Item with name "${itemName}" not found`);
-  }  
+  }
 
   /**
    * Gets the number of items in the cart
@@ -48,32 +71,32 @@ const items = await $$('div.inventory_item');
    * TODO: Implement this method
    */
 
- get cartBadge() {
-        return $('.shopping_cart_badge');
-    }
+  get cartBadge() {
+    return $('.shopping_cart_badge');
+  }
 
   async getCartItemCount(): Promise<number> {
     // TODO: Implement getting cart item count
     const isDisplayed = await this.cartBadge.isDisplayed();
-        if (!isDisplayed) return 0;
+    if (!isDisplayed) return 0;
 
-        const text = await this.cartBadge.getText();
-        return parseInt(text, 10);
-   // throw new Error('Method not implemented');
+    const text = await this.cartBadge.getText();
+    return parseInt(text, 10);
+    // throw new Error('Method not implemented');
   }
 
   /**
    * Navigates to the cart page
    * TODO: Implement this method
    */
-  
-   private get cartIcon() {
+
+  private get cartIcon() {
     return $('a.shopping_cart_link');
   }
-  
+
   async goToCart(): Promise<void> {
     // TODO: Implement navigation to cart
-            await this.cartIcon.click();
-   // throw new Error('Method not implemented');
+    await this.cartIcon.click();
+    // throw new Error('Method not implemented');
   }
 }

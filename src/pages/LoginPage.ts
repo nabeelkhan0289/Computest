@@ -43,7 +43,7 @@ export default class LoginPage extends BasePage {
    */
   async getErrorMessage(): Promise<string> {
     // TODO: Implement getting error message
-      return await this.errorMessage.getText();
-   // throw new Error('Method not implemented');
+    return await this.errorMessage.getText();
+    // throw new Error('Method not implemented');
   }
 }

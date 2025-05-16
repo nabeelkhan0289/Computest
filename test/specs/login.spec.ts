@@ -23,7 +23,7 @@ describe('Login functionality', () => {
     expect(isLoaded).toBe(true);
 
     // Take a screenshot for the report
-   // await ReportHelper.takeScreenshot('After successful login');
+    // await ReportHelper.takeScreenshot('After successful login');
   });
 
   it('should show error message with invalid credentials', async () => {
@@ -36,7 +36,7 @@ describe('Login functionality', () => {
     expect(errorMessage).toContain('Username and password do not match');
 
     // Add the error message to the report
-   // await ReportHelper.addAttachment('Error message', errorMessage, 'text/plain');
+    // await ReportHelper.addAttachment('Error message', errorMessage, 'text/plain');
     //await ReportHelper.takeScreenshot('Login error');
   });
 });

@@ -32,29 +32,22 @@ describe('Shopping cart functionality', () => {
     // Add specific items to the cart
     await inventoryPage.addItemToCart('Sauce Labs Backpack');
     await inventoryPage.addItemToCart('Sauce Labs Bike Light');
-
     // Navigate to the cart page
     await inventoryPage.goToCart();
     await cartPage.isLoaded();
     // Wait for checkout button to appear cart page is ready.
-
     // Verify that the cart contains the correct items.
     const cartItems = await cartPage.getCartItems();
     expect(cartItems).toEqual(['Sauce Labs Backpack', 'Sauce Labs Bike Light']);
   });
 
   it('should remove an item from the cart', async () => {
-    // Add item to the cart
-    await inventoryPage.addItemToCart('Sauce Labs Backpack');
-
     // Navigate to the cart page
     await inventoryPage.goToCart();
-
     // Remove the item
     await cartPage.removeItem('Sauce Labs Backpack');
-
     // Verify that the item is no longer in the cart
     const cartItems = await cartPage.getCartItems();
-    expect(cartItems).toEqual([]);
+    expect(cartItems).toEqual(['Sauce Labs Bike Light']);
   });
 });
