@@ -25,7 +25,7 @@ describe('Shopping cart functionality', () => {
 
     // Verify that the cart badge shows the correct count
     const cartBadge = await inventoryPage.getCartItemCount();
-    expect(cartBadge).toBe('1');
+    expect(cartBadge.toString()).toBe('1');
   });
 
   it('should display the correct items in the cart', async () => {
@@ -35,8 +35,10 @@ describe('Shopping cart functionality', () => {
 
     // Navigate to the cart page
     await inventoryPage.goToCart();
+    await cartPage.isLoaded();
+    // Wait for checkout button to appear cart page is ready.
 
-    // Verify that the cart contains the correct items
+    // Verify that the cart contains the correct items.
     const cartItems = await cartPage.getCartItems();
     expect(cartItems).toEqual(['Sauce Labs Backpack', 'Sauce Labs Bike Light']);
   });

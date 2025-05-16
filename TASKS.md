@@ -3,6 +3,7 @@
 ## Epic: Test Automation Framework Setup
 
 ### Task 1: Page Object Implementation
+
 - [ ] Implement LoginPage class
   - Effort: Low
   - Acceptance Criteria:
@@ -26,6 +27,7 @@
     - Checkout functionality is implemented
 
 ### Task 2: Test Implementation
+
 - [ ] Implement login functionality tests
   - Effort: Low
   - Acceptance Criteria:
@@ -40,6 +42,7 @@
     - Remove item from cart test passes
 
 ### Task 3: Test Reporting
+
 - [ ] Review and understand Allure reporting
   - Effort: Low
   - Acceptance Criteria:
@@ -47,6 +50,7 @@
     - Know how to add custom steps and attachments to reports
 
 ### Task 4: Code Quality
+
 - [ ] Ensure code follows TypeScript best practices
   - Effort: Low
   - Acceptance Criteria:

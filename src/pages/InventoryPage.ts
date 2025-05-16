@@ -12,9 +12,15 @@ export default class InventoryPage extends BasePage {
    * @returns True if the page is loaded
    * TODO: Implement this method
    */
+
+get inventoryContainer() {
+    return $('#inventory_container'); // Adjust selector if needed
+  }
+
   async isLoaded(): Promise<boolean> {
     // TODO: Implement check if inventory page is loaded
-    throw new Error('Method not implemented');
+        return await this.inventoryContainer.waitForDisplayed({ timeout: 5000 });
+    //throw new Error('Method not implemented');
   }
 
   /**
@@ -24,25 +30,50 @@ export default class InventoryPage extends BasePage {
    */
   async addItemToCart(itemName: string): Promise<void> {
     // TODO: Implement adding item to cart
-    throw new Error('Method not implemented');
-  }
+const items = await $$('div.inventory_item');
+    for (const item of items) {
+      const title = await item.$('div.inventory_item_name').getText();
+      if (title === itemName) {
+        const addButton = await item.$('button.btn_inventory');
+        await addButton.click();
+        return;
+      }
+    }
+    throw new Error(`Item with name "${itemName}" not found`);
+  }  
 
   /**
    * Gets the number of items in the cart
    * @returns Number of items in the cart
    * TODO: Implement this method
    */
+
+ get cartBadge() {
+        return $('.shopping_cart_badge');
+    }
+
   async getCartItemCount(): Promise<number> {
     // TODO: Implement getting cart item count
-    throw new Error('Method not implemented');
+    const isDisplayed = await this.cartBadge.isDisplayed();
+        if (!isDisplayed) return 0;
+
+        const text = await this.cartBadge.getText();
+        return parseInt(text, 10);
+   // throw new Error('Method not implemented');
   }
 
   /**
    * Navigates to the cart page
    * TODO: Implement this method
    */
+  
+   private get cartIcon() {
+    return $('a.shopping_cart_link');
+  }
+  
   async goToCart(): Promise<void> {
     // TODO: Implement navigation to cart
-    throw new Error('Method not implemented');
+            await this.cartIcon.click();
+   // throw new Error('Method not implemented');
   }
 }

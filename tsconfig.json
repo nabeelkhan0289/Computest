@@ -8,7 +8,7 @@
       "mocha",
       "@wdio/globals/types",
       "expect-webdriverio",
-      "@wdio/mocha-framework"
+      "@wdio/mocha-framework"    
     ],
     "skipLibCheck": true,
     "sourceMap": true,
@@ -28,9 +28,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "./src/**/*.ts",
-    "./test/**/*.ts",
-    "./wdio.conf.ts"
-  ]
+  "include": ["./src/**/*.ts", "./test/**/*.ts", "./wdio.conf.ts"]
 }

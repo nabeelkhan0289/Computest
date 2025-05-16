@@ -15,11 +15,13 @@ Your task is to implement automated tests for the [Sauce Demo](https://www.sauce
 ### Requirements
 
 1. Implement the page objects in the `src/pages` directory:
+
    - Complete the `LoginPage` implementation
    - Complete the `InventoryPage` implementation
    - Complete the `CartPage` implementation
 
 2. Implement the test cases in the `test/specs` directory:
+
    - Login functionality tests
    - Shopping cart functionality tests
 
@@ -46,12 +48,14 @@ Your task is to implement automated tests for the [Sauce Demo](https://www.sauce
 This assignment is distributed as a Git bundle. Follow these steps to set it up:
 
 1. Create a new directory for the project:
+
    ```bash
    mkdir qa-automation-assignment
    cd qa-automation-assignment
    ```
 
 2. Clone the repository from the bundle:
+
    ```bash
    git clone qa-automation-solution.bundle .
    ```
@@ -105,6 +109,7 @@ git bundle create qa-automation-solution.bundle HEAD main
 3. Send the bundle file to the provided email address with the subject line "QA Automation Assignment - [Your Name]"
 
 ### Notes
+
 - Make sure to include your name and contact information in the email
 - The bundle file contains your complete repository with all commits
 
